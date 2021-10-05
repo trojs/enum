@@ -45,9 +45,9 @@ encoding.in(['TEXT']) // true
 encoding.in([42]) // false
 
 encoding.valueOf() // 42
-encoding.toString() // '42'
-encoding.toJSON() // 42
-JSON.stringify(encoding) // '42'
+encoding.toString() // 'test'
+encoding.toJSON() // 'test'
+JSON.stringify(encoding) // '"test"'
 
 const encoding = Encoding.create('test')
 encoding.key // 'test'
@@ -64,6 +64,12 @@ Encoding.hasValue('TEXT') // false
 
 Encoding.toJSON() // { test: 'TEXT', another: 42 }
 JSON.stringify(Encoding) // '{"test":"TEXT","another":42}'
+
+const encoding = Encoding.create('test', { output: 'value' })
+encoding.valueOf() // 42
+encoding.toString() // '42'
+encoding.toJSON() // 42
+JSON.stringify(encoding) // '42'
 ```
 
 [npm-url]: https://www.npmjs.com/package/@hckrnews/enum

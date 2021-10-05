@@ -225,6 +225,47 @@ describe('Test the encoding enum', () => {
     expect(example.in([2])).toEqual(true)
     expect(example.in(['something'])).toEqual(false)
     expect(example.valueOf()).toEqual(2)
+    expect(example.toString()).toEqual('test2')
+    expect(example.toJSON()).toEqual('test2')
+    expect(JSON.stringify(example)).toEqual('"test2"')
+  })
+
+  it('It should use the value for toString and toJSON', () => {
+    class Example extends Enum {
+        static 'test1' = 1
+        static 'test2' = 2
+        static 'test3' = 3
+    }
+
+    const example = Example.create('test2', { output: 'value' })
+    expect(example.key).toEqual('test2')
+    expect(example.value).toEqual(2)
+    expect(example.values).toEqual([1, 2, 3])
+    expect(Example.options).toEqual({
+      test1: 1,
+      test2: 2,
+      test3: 3
+    })
+    expect(Example.toJSON()).toEqual({
+      test1: 1,
+      test2: 2,
+      test3: 3
+    })
+    expect(JSON.stringify(Example)).toEqual('{"test1":1,"test2":2,"test3":3}')
+    expect(Example.test1).toEqual(1)
+    expect(Example.test2).toEqual(2)
+    expect(Example.test3).toEqual(3)
+    expect(Example.options.test2).toEqual(2)
+    expect(example.keys).toEqual(['test1', 'test2', 'test3'])
+    expect(example.test2).toEqual(2)
+    expect(example.length).toEqual(3)
+    expect(example.is(Example.test2)).toEqual(true)
+    expect(example.is(2)).toEqual(true)
+    expect(example.is('something')).toEqual(false)
+    expect(example.in([Example.test2])).toEqual(true)
+    expect(example.in([2])).toEqual(true)
+    expect(example.in(['something'])).toEqual(false)
+    expect(example.valueOf()).toEqual(2)
     expect(example.toString()).toEqual('2')
     expect(example.toJSON()).toEqual(2)
     expect(JSON.stringify(example)).toEqual('2')

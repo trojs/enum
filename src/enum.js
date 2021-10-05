@@ -2,34 +2,37 @@ export default class Enum {
   constructor () {
     this.key = null
     this.value = null
+    this.output = 'key'
   }
 
   static get options () {
     return Object.fromEntries(Object.entries(this))
   }
 
-  static create (key) {
-    return this.fromKey(key)
+  static create (key, options = {}) {
+    return this.fromKey(key, options)
   }
 
-  static fromKey (key) {
+  static fromKey (key, options = {}) {
     const newEnum = new this()
     if (!newEnum.isValidKey(key)) {
       throw new Error(`Invalid enum key ${key}`)
     }
     const value = newEnum.constructor[key]
     newEnum.setKeyValue({ key, value })
+    newEnum.setOptions(options)
 
     return newEnum
   }
 
-  static fromValue (value) {
+  static fromValue (value, options = {}) {
     const newEnum = new this()
     if (!newEnum.isValidValue(value)) {
       throw new Error(`Invalid enum value ${value}`)
     }
     const key = newEnum.invertedOptions[value]
     newEnum.setKeyValue({ key, value })
+    newEnum.setOptions(options)
 
     return newEnum
   }
@@ -38,6 +41,10 @@ export default class Enum {
     this.setValues()
     this.setKey(key)
     this.setValue(value)
+  }
+
+  setOptions (options) {
+    this.output = options?.output || this.output
   }
 
   get invertedOptions () {
@@ -106,14 +113,14 @@ export default class Enum {
   }
 
   toString () {
-    return this.value.toString()
+    return this[this.output].toString()
   }
 
   toJSON () {
-    return this.value
+    return this[this.output]
   }
 
   static toJSON () {
-      return Object.fromEntries(Object.entries(this))
+    return Object.fromEntries(Object.entries(this))
   }
 }
