@@ -96,4 +96,12 @@ export default class Enum {
   get length () {
     return Object.keys(this.constructor).length
   }
+
+  valueOf () {
+    return this.value
+  }
+
+  toString () {
+    return this.value.toString()
+  }
 }
