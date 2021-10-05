@@ -20,18 +20,17 @@ or
 import Enum from '@hckrnews/enum'
 
 class Ecample extends Enum {
-  get options () {
-    return {
-      'test': 'TEXT'
-    }
+  static options = {
+    'test': 'TEXT'
   }
 }
+
+Encoding.options // { test: 'TEXT' }
 
 const encoding = Encoding.fromKey('test')
 encoding.key // test
 encoding.value // TEXT
 encoding.values // [ 'TEXT' ]
-encoding.options // { test: 'TEXT' }
 encoding.keys // [ 'test' ]
 encoding.test // TEXT
 encoding.length // 1
