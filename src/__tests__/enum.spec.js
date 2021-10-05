@@ -220,5 +220,6 @@ describe('Test the encoding enum', () => {
     expect(example.in(['something'])).toEqual(false)
     expect(example.valueOf()).toEqual(2)
     expect(example.toString()).toEqual('2')
+    expect(example.toJSON()).toEqual(2)
   })
 })
