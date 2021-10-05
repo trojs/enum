@@ -36,6 +36,9 @@ encoding.keys // [ 'test' ]
 encoding.test // TEXT
 encoding.length // 1
 
+encoding.is('TEXT') // true
+encoding.in(['TEXT']) // true
+
 
 const encoding = Encoding.fromValue('TEXT')
 encoding.key // test

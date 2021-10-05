@@ -62,6 +62,14 @@ export default class Enum {
     return this.values.includes(value)
   }
 
+  is (value) {
+    return this.value === value
+  }
+
+  in (values) {
+    return values.includes(this.value)
+  }
+
   static hasKey (key) {
     const newEnum = new this()
 
