@@ -22,6 +22,7 @@ describe('Test the encoding enum', () => {
     expect(Encoding.options).toEqual({
       'utf-8': 'UTF-8'
     })
+    expect(Encoding.options['utf-8']).toEqual('UTF-8')
     expect(encoding.keys).toEqual(['utf-8'])
     expect(encoding['utf-8']).toEqual('UTF-8')
     expect(encoding.length).toEqual(1)
