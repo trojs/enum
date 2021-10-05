@@ -2,9 +2,7 @@ import { expect, describe, it } from '@jest/globals'
 import Enum from '../enum.js'
 
 class Encoding extends Enum {
-  static options = {
-    'utf-8': 'UTF-8'
-  }
+  static 'utf-8' = 'UTF-8'
 }
 
 describe('Test the encoding enum', () => {
@@ -68,9 +66,7 @@ describe('Test the encoding enum', () => {
 
   it('It should handle reserved word key', () => {
     class Example extends Enum {
-      static options = {
-        key: 1
-      }
+      static key = 1
     }
     const example = Example.fromKey('key')
 
@@ -87,9 +83,7 @@ describe('Test the encoding enum', () => {
 
   it('It should handle reserved word value', () => {
     class Example extends Enum {
-        static options = {
-          value: 1
-        }
+        static value = 1
     }
     const example = Example.fromKey('value')
 
@@ -106,18 +100,14 @@ describe('Test the encoding enum', () => {
 
   it('It should handle reserved word options', () => {
     class Example extends Enum {
-        static options = {
-          options: 42
-        }
+        static options = 42
     }
     const example = Example.fromKey('options')
 
     expect(example.key).toEqual('options')
     expect(example.value).toEqual(42)
     expect(example.values).toEqual([42])
-    expect(Example.options).toEqual({
-      options: 42
-    })
+    expect(Example.options).toEqual(42)
     expect(example.keys).toEqual(['options'])
     expect(example.options).toEqual(42)
     expect(example.length).toEqual(1)
@@ -125,9 +115,7 @@ describe('Test the encoding enum', () => {
 
   it('It should handle reserved word is', () => {
     class Example extends Enum {
-        static options = {
-          is: 42
-        }
+        static is = 42
     }
     const example = Example.fromKey('is')
 
@@ -147,9 +135,7 @@ describe('Test the encoding enum', () => {
 
   it('It should handle reserved word in', () => {
     class Example extends Enum {
-        static options = {
-          in: 42
-        }
+        static in = 42
     }
     const example = Example.fromKey('in')
 
@@ -170,9 +156,7 @@ describe('Test the encoding enum', () => {
   it('It should handle reserved word keys', () => {
     expect(() => {
       class Example extends Enum {
-        static options = {
-          keys: 1
-        }
+        static keys = 1
       }
       Example.fromKey('keys')
     }).toThrowError('Cannot set property keys of #<Enum> which has only a getter')
@@ -181,9 +165,7 @@ describe('Test the encoding enum', () => {
   it('It should handle reserved word values', () => {
     expect(() => {
       class Example extends Enum {
-        static options = {
-          values: 1
-        }
+        static values = 1
       }
       Example.fromKey('values')
     }).toThrowError('Cannot set property values of #<Enum> which has only a getter')
@@ -191,28 +173,50 @@ describe('Test the encoding enum', () => {
 
   it('It should overrule the options', () => {
     class Example extends Enum {
-        static options = {
-          options: 1
-        }
+        static options = 1
     }
-    expect(Example.options).toEqual({
-      options: 1
-    })
+    expect(Example.options).toEqual(1)
     const example = Example.fromKey('options')
     expect(example.values).toEqual([1])
 
-    Example.options.options = 42
-    expect(Example.options).toEqual({
-      options: 42
-    })
+    Example.options = 42
+    expect(Example.options).toEqual(42)
     expect(example.values).toEqual([42])
 
-    Example.options = {
-      options2: 2
+    Example.options2 = 2
+    expect(Example.options).toEqual(42)
+    expect(Example.options2).toEqual(2)
+    expect(example.values).toEqual([42, 2])
+  })
+
+  it('It should also work with multiple options', () => {
+    class Example extends Enum {
+        static 'test1' = 1
+        static 'test2' = 2
+        static 'test3' = 3
     }
+
+    const example = Example.fromKey('test2')
+    expect(example.key).toEqual('test2')
+    expect(example.value).toEqual(2)
+    expect(example.values).toEqual([1, 2, 3])
     expect(Example.options).toEqual({
-      options2: 2
+      test1: 1,
+      test2: 2,
+      test3: 3
     })
-    expect(example.values).toEqual([2])
+    expect(Example.test1).toEqual(1)
+    expect(Example.test2).toEqual(2)
+    expect(Example.test3).toEqual(3)
+    expect(Example.options.test2).toEqual(2)
+    expect(example.keys).toEqual(['test1', 'test2', 'test3'])
+    expect(example.test2).toEqual(2)
+    expect(example.length).toEqual(3)
+    expect(example.is(Example.options.test2)).toEqual(true)
+    expect(example.is(2)).toEqual(true)
+    expect(example.is('something')).toEqual(false)
+    expect(example.in([Example.options.test2])).toEqual(true)
+    expect(example.in([2])).toEqual(true)
+    expect(example.in(['something'])).toEqual(false)
   })
 })
