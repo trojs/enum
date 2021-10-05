@@ -59,4 +59,85 @@ describe('Test the encoding enum', () => {
       Encoding.fromValue('utf-8')
     }).toThrowError('Invalid enum value utf-8')
   })
+
+  it('It should handle reserved word key', () => {
+    class Example extends Enum {
+      get options () {
+        return {
+          key: 1
+        }
+      }
+    }
+    const example = Example.fromKey('key')
+
+    expect(example.key).toEqual('key')
+    expect(example.value).toEqual(1)
+    expect(example.values).toEqual([1])
+    expect(example.options).toEqual({
+      key: 1
+    })
+    expect(example.keys).toEqual(['key'])
+    expect(example.key).toEqual('key')
+    expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word value', () => {
+    class Example extends Enum {
+      get options () {
+        return {
+          value: 1
+        }
+      }
+    }
+    const example = Example.fromKey('value')
+
+    expect(example.key).toEqual('value')
+    expect(example.value).toEqual(1)
+    expect(example.values).toEqual([1])
+    expect(example.options).toEqual({
+      value: 1
+    })
+    expect(example.keys).toEqual(['value'])
+    expect(example.key).toEqual('value')
+    expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word options', () => {
+    expect(() => {
+      class Example extends Enum {
+        get options () {
+          return {
+            options: 1
+          }
+        }
+      }
+      Example.fromKey('options')
+    }).toThrowError('Cannot set property options of #<Example> which has only a getter')
+  })
+
+  it('It should handle reserved word keys', () => {
+    expect(() => {
+      class Example extends Enum {
+        get options () {
+          return {
+            keys: 1
+          }
+        }
+      }
+      Example.fromKey('keys')
+    }).toThrowError('Cannot set property keys of #<Enum> which has only a getter')
+  })
+
+  it('It should handle reserved word values', () => {
+    expect(() => {
+      class Example extends Enum {
+        get options () {
+          return {
+            values: 1
+          }
+        }
+      }
+      Example.fromKey('values')
+    }).toThrowError('Cannot set property values of #<Enum> which has only a getter')
+  })
 })

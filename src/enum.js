@@ -10,9 +10,7 @@ export default class Enum {
       throw new Error(`Invalid enum key ${key}`)
     }
     const value = newEnum.options[key]
-    newEnum.setValues()
-    newEnum.setKey(key)
-    newEnum.setValue(value)
+    newEnum.setKeyValue({ key, value })
 
     return newEnum
   }
@@ -23,11 +21,15 @@ export default class Enum {
       throw new Error(`Invalid enum value ${value}`)
     }
     const key = newEnum.invertedOptions[value]
-    newEnum.setValues()
-    newEnum.setKey(key)
-    newEnum.setValue(value)
+    newEnum.setKeyValue({ key, value })
 
     return newEnum
+  }
+
+  setKeyValue ({ key, value }) {
+    this.setValues()
+    this.setKey(key)
+    this.setValue(value)
   }
 
   get invertedOptions () {
