@@ -137,4 +137,31 @@ describe('Test the encoding enum', () => {
       Example.fromKey('values')
     }).toThrowError('Cannot set property values of #<Enum> which has only a getter')
   })
+
+  it('It should overrule the options', () => {
+    class Example extends Enum {
+        static options = {
+          options: 1
+        }
+    }
+    const example = Example.fromKey('options')
+    expect(example.values).toEqual([1])
+    expect(Example.options).toEqual({
+      options: 1
+    })
+
+    Example.options.options = 42
+    expect(example.values).toEqual([42])
+    expect(Example.options).toEqual({
+      options: 42
+    })
+
+    Example.options = {
+      options2: 2
+    }
+    expect(example.values).toEqual([2])
+    expect(Example.options).toEqual({
+      options2: 2
+    })
+  })
 })
