@@ -159,7 +159,7 @@ describe('Test the encoding enum', () => {
         static keys = 1
       }
       Example.fromKey('keys')
-    }).toThrowError('Cannot set property keys of #<Enum> which has only a getter')
+    }).toThrowError('Cannot set property keys of [object Object] which has only a getter')
   })
 
   it('It should handle reserved word values', () => {
@@ -168,7 +168,7 @@ describe('Test the encoding enum', () => {
         static values = 1
       }
       Example.fromKey('values')
-    }).toThrowError('Cannot set property values of #<Enum> which has only a getter')
+    }).toThrowError('Cannot set property values of [object Object] which has only a getter')
   })
 
   it('It should overrule the options', () => {
@@ -218,5 +218,7 @@ describe('Test the encoding enum', () => {
     expect(example.in([Example.test2])).toEqual(true)
     expect(example.in([2])).toEqual(true)
     expect(example.in(['something'])).toEqual(false)
+    expect(example.valueOf()).toEqual(2)
+    expect(example.toString()).toEqual('2')
   })
 })
