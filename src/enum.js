@@ -1,9 +1,11 @@
 export default class Enum {
-  static options = {}
-
   constructor () {
     this.key = null
     this.value = null
+  }
+
+  static get options () {
+    return Object.fromEntries(Object.entries(this))
   }
 
   static fromKey (key) {
@@ -11,7 +13,7 @@ export default class Enum {
     if (!newEnum.isValidKey(key)) {
       throw new Error(`Invalid enum key ${key}`)
     }
-    const value = newEnum.constructor.options[key]
+    const value = newEnum.constructor[key]
     newEnum.setKeyValue({ key, value })
 
     return newEnum
@@ -36,7 +38,7 @@ export default class Enum {
 
   get invertedOptions () {
     return Object
-      .entries(this.constructor.options)
+      .entries(this.constructor)
       .reduce((newObj, [key, value]) => ({ ...newObj, [value]: key }), {})
   }
 
@@ -49,13 +51,13 @@ export default class Enum {
   }
 
   setValues () {
-    Object.entries(this.constructor.options).forEach(([key, value]) => {
+    Object.entries(this.constructor).forEach(([key, value]) => {
       this[key] = value
     })
   }
 
   isValidKey (key) {
-    return Object.hasOwnProperty.call(this.constructor.options, key) && Object.propertyIsEnumerable.call(this.constructor.options, key)
+    return Object.hasOwnProperty.call(this.constructor, key) && Object.propertyIsEnumerable.call(this.constructor, key)
   }
 
   isValidValue (value) {
@@ -83,14 +85,14 @@ export default class Enum {
   }
 
   get keys () {
-    return Object.keys(this.constructor.options)
+    return Object.keys(this.constructor)
   }
 
   get values () {
-    return Object.values(this.constructor.options)
+    return Object.values(this.constructor)
   }
 
   get length () {
-    return Object.keys(this.constructor.options).length
+    return Object.keys(this.constructor).length
   }
 }
