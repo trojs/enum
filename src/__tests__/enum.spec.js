@@ -2,10 +2,8 @@ import { expect, describe, it } from '@jest/globals'
 import Enum from '../enum.js'
 
 class Encoding extends Enum {
-  get options () {
-    return {
-      'utf-8': 'UTF-8'
-    }
+  static options = {
+    'utf-8': 'UTF-8'
   }
 }
 
@@ -13,6 +11,7 @@ describe('Test the encoding enum', () => {
   it('It should work with the default enum', () => {
     expect(Enum.hasKey('test')).toEqual(false)
     expect(Enum.hasValue('test')).toEqual(false)
+    expect(Enum.options).toEqual({})
   })
 
   it('It should create from a key', () => {
@@ -20,7 +19,7 @@ describe('Test the encoding enum', () => {
     expect(encoding.key).toEqual('utf-8')
     expect(encoding.value).toEqual('UTF-8')
     expect(encoding.values).toEqual(['UTF-8'])
-    expect(encoding.options).toEqual({
+    expect(Encoding.options).toEqual({
       'utf-8': 'UTF-8'
     })
     expect(encoding.keys).toEqual(['utf-8'])
@@ -33,7 +32,7 @@ describe('Test the encoding enum', () => {
     expect(encoding.key).toEqual('utf-8')
     expect(encoding.value).toEqual('UTF-8')
     expect(encoding.values).toEqual(['UTF-8'])
-    expect(encoding.options).toEqual({
+    expect(Encoding.options).toEqual({
       'utf-8': 'UTF-8'
     })
     expect(encoding.keys).toEqual(['utf-8'])
@@ -58,5 +57,111 @@ describe('Test the encoding enum', () => {
     expect(() => {
       Encoding.fromValue('utf-8')
     }).toThrowError('Invalid enum value utf-8')
+  })
+
+  it('It should handle reserved word key', () => {
+    class Example extends Enum {
+      static options = {
+        key: 1
+      }
+    }
+    const example = Example.fromKey('key')
+
+    expect(example.key).toEqual('key')
+    expect(example.value).toEqual(1)
+    expect(example.values).toEqual([1])
+    expect(Example.options).toEqual({
+      key: 1
+    })
+    expect(example.keys).toEqual(['key'])
+    expect(example.key).toEqual('key')
+    expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word value', () => {
+    class Example extends Enum {
+        static options = {
+          value: 1
+        }
+    }
+    const example = Example.fromKey('value')
+
+    expect(example.key).toEqual('value')
+    expect(example.value).toEqual(1)
+    expect(example.values).toEqual([1])
+    expect(Example.options).toEqual({
+      value: 1
+    })
+    expect(example.keys).toEqual(['value'])
+    expect(example.key).toEqual('value')
+    expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word options', () => {
+    class Example extends Enum {
+        static options = {
+          options: 1
+        }
+    }
+    const example = Example.fromKey('options')
+
+    expect(example.key).toEqual('options')
+    expect(example.value).toEqual(1)
+    expect(example.values).toEqual([1])
+    expect(Example.options).toEqual({
+      options: 1
+    })
+    expect(example.keys).toEqual(['options'])
+    expect(example.key).toEqual('options')
+    expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word keys', () => {
+    expect(() => {
+      class Example extends Enum {
+        static options = {
+          keys: 1
+        }
+      }
+      Example.fromKey('keys')
+    }).toThrowError('Cannot set property keys of #<Enum> which has only a getter')
+  })
+
+  it('It should handle reserved word values', () => {
+    expect(() => {
+      class Example extends Enum {
+        static options = {
+          values: 1
+        }
+      }
+      Example.fromKey('values')
+    }).toThrowError('Cannot set property values of #<Enum> which has only a getter')
+  })
+
+  it('It should overrule the options', () => {
+    class Example extends Enum {
+        static options = {
+          options: 1
+        }
+    }
+    const example = Example.fromKey('options')
+    expect(example.values).toEqual([1])
+    expect(Example.options).toEqual({
+      options: 1
+    })
+
+    Example.options.options = 42
+    expect(example.values).toEqual([42])
+    expect(Example.options).toEqual({
+      options: 42
+    })
+
+    Example.options = {
+      options2: 2
+    }
+    expect(example.values).toEqual([2])
+    expect(Example.options).toEqual({
+      options2: 2
+    })
   })
 })

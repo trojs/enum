@@ -1,4 +1,6 @@
 export default class Enum {
+  static options = {}
+
   constructor () {
     this.key = null
     this.value = null
@@ -9,10 +11,8 @@ export default class Enum {
     if (!newEnum.isValidKey(key)) {
       throw new Error(`Invalid enum key ${key}`)
     }
-    const value = newEnum.options[key]
-    newEnum.setValues()
-    newEnum.setKey(key)
-    newEnum.setValue(value)
+    const value = newEnum.constructor.options[key]
+    newEnum.setKeyValue({ key, value })
 
     return newEnum
   }
@@ -23,16 +23,20 @@ export default class Enum {
       throw new Error(`Invalid enum value ${value}`)
     }
     const key = newEnum.invertedOptions[value]
-    newEnum.setValues()
-    newEnum.setKey(key)
-    newEnum.setValue(value)
+    newEnum.setKeyValue({ key, value })
 
     return newEnum
   }
 
+  setKeyValue ({ key, value }) {
+    this.setValues()
+    this.setKey(key)
+    this.setValue(value)
+  }
+
   get invertedOptions () {
     return Object
-      .entries(this.options)
+      .entries(this.constructor.options)
       .reduce((newObj, [key, value]) => ({ ...newObj, [value]: key }), {})
   }
 
@@ -45,13 +49,13 @@ export default class Enum {
   }
 
   setValues () {
-    Object.entries(this.options).forEach(([key, value]) => {
+    Object.entries(this.constructor.options).forEach(([key, value]) => {
       this[key] = value
     })
   }
 
   isValidKey (key) {
-    return Object.hasOwnProperty.call(this.options, key) && Object.propertyIsEnumerable.call(this.options, key)
+    return Object.hasOwnProperty.call(this.constructor.options, key) && Object.propertyIsEnumerable.call(this.constructor.options, key)
   }
 
   isValidValue (value) {
@@ -70,19 +74,15 @@ export default class Enum {
     return newEnum.isValidValue(value)
   }
 
-  get options () {
-    return {}
-  }
-
   get keys () {
-    return Object.keys(this.options)
+    return Object.keys(this.constructor.options)
   }
 
   get values () {
-    return Object.values(this.options)
+    return Object.values(this.constructor.options)
   }
 
   get length () {
-    return Object.keys(this.options).length
+    return Object.keys(this.constructor.options).length
   }
 }
