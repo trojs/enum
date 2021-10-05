@@ -26,6 +26,10 @@ describe('Test the encoding enum', () => {
     expect(encoding.keys).toEqual(['utf-8'])
     expect(encoding['utf-8']).toEqual('UTF-8')
     expect(encoding.length).toEqual(1)
+    expect(encoding.is(Encoding.options['utf-8'])).toEqual(true)
+    expect(encoding.is('something')).toEqual(false)
+    expect(encoding.in([Encoding.options['utf-8']])).toEqual(true)
+    expect(encoding.in(['something'])).toEqual(false)
   })
 
   it('It should create from an value', () => {
