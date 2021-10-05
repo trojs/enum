@@ -26,6 +26,7 @@ class Ecample extends Enum {
 }
 
 Encoding.options // { test: 'TEXT' }
+Encoding.options.test // 'TEXT'
 
 const encoding = Encoding.fromKey('test')
 encoding.key // test

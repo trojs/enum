@@ -22,6 +22,7 @@ describe('Test the encoding enum', () => {
     expect(Encoding.options).toEqual({
       'utf-8': 'UTF-8'
     })
+    expect(Encoding.options['utf-8']).toEqual('UTF-8')
     expect(encoding.keys).toEqual(['utf-8'])
     expect(encoding['utf-8']).toEqual('UTF-8')
     expect(encoding.length).toEqual(1)
@@ -93,26 +94,26 @@ describe('Test the encoding enum', () => {
       value: 1
     })
     expect(example.keys).toEqual(['value'])
-    expect(example.key).toEqual('value')
+    expect(example.value).toEqual(1)
     expect(example.length).toEqual(1)
   })
 
   it('It should handle reserved word options', () => {
     class Example extends Enum {
         static options = {
-          options: 1
+          options: 42
         }
     }
     const example = Example.fromKey('options')
 
     expect(example.key).toEqual('options')
-    expect(example.value).toEqual(1)
-    expect(example.values).toEqual([1])
+    expect(example.value).toEqual(42)
+    expect(example.values).toEqual([42])
     expect(Example.options).toEqual({
-      options: 1
+      options: 42
     })
     expect(example.keys).toEqual(['options'])
-    expect(example.key).toEqual('options')
+    expect(example.options).toEqual(42)
     expect(example.length).toEqual(1)
   })
 
@@ -144,24 +145,24 @@ describe('Test the encoding enum', () => {
           options: 1
         }
     }
-    const example = Example.fromKey('options')
-    expect(example.values).toEqual([1])
     expect(Example.options).toEqual({
       options: 1
     })
+    const example = Example.fromKey('options')
+    expect(example.values).toEqual([1])
 
     Example.options.options = 42
-    expect(example.values).toEqual([42])
     expect(Example.options).toEqual({
       options: 42
     })
+    expect(example.values).toEqual([42])
 
     Example.options = {
       options2: 2
     }
-    expect(example.values).toEqual([2])
     expect(Example.options).toEqual({
       options2: 2
     })
+    expect(example.values).toEqual([2])
   })
 })
