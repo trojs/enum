@@ -27,8 +27,10 @@ describe('Test the encoding enum', () => {
     expect(encoding['utf-8']).toEqual('UTF-8')
     expect(encoding.length).toEqual(1)
     expect(encoding.is(Encoding.options['utf-8'])).toEqual(true)
+    expect(encoding.is('UTF-8')).toEqual(true)
     expect(encoding.is('something')).toEqual(false)
     expect(encoding.in([Encoding.options['utf-8']])).toEqual(true)
+    expect(encoding.in(['UTF-8'])).toEqual(true)
     expect(encoding.in(['something'])).toEqual(false)
   })
 
@@ -119,6 +121,50 @@ describe('Test the encoding enum', () => {
     expect(example.keys).toEqual(['options'])
     expect(example.options).toEqual(42)
     expect(example.length).toEqual(1)
+  })
+
+  it('It should handle reserved word is', () => {
+    class Example extends Enum {
+        static options = {
+          is: 42
+        }
+    }
+    const example = Example.fromKey('is')
+
+    expect(example.key).toEqual('is')
+    expect(example.value).toEqual(42)
+    expect(example.values).toEqual([42])
+    expect(Example.options).toEqual({
+      is: 42
+    })
+    expect(example.keys).toEqual(['is'])
+    expect(example.is).toEqual(42)
+    expect(example.length).toEqual(1)
+    expect(example.in([Example.options.is])).toEqual(true)
+    expect(example.in([42])).toEqual(true)
+    expect(example.in(['something'])).toEqual(false)
+  })
+
+  it('It should handle reserved word in', () => {
+    class Example extends Enum {
+        static options = {
+          in: 42
+        }
+    }
+    const example = Example.fromKey('in')
+
+    expect(example.key).toEqual('in')
+    expect(example.value).toEqual(42)
+    expect(example.values).toEqual([42])
+    expect(Example.options).toEqual({
+      in: 42
+    })
+    expect(example.keys).toEqual(['in'])
+    expect(example.in).toEqual(42)
+    expect(example.length).toEqual(1)
+    expect(example.is(Example.options.in)).toEqual(true)
+    expect(example.is(42)).toEqual(true)
+    expect(example.is('something')).toEqual(false)
   })
 
   it('It should handle reserved word keys', () => {
