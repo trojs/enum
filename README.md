@@ -37,8 +37,10 @@ encoding.test // 'TEXT'
 encoding.another // 42
 encoding.length // 2
 
+encoding.is(Encoding.test) // true
 encoding.is('TEXT') // true
 encoding.is(42) // false
+encoding.in([Encoding.test]) // true
 encoding.in(['TEXT']) // true
 encoding.in([42]) // false
 
