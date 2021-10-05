@@ -8,6 +8,10 @@ export default class Enum {
     return Object.fromEntries(Object.entries(this))
   }
 
+  static create (key) {
+    return this.fromKey(key)
+  }
+
   static fromKey (key) {
     const newEnum = new this()
     if (!newEnum.isValidKey(key)) {
@@ -107,5 +111,9 @@ export default class Enum {
 
   toJSON () {
     return this.value
+  }
+
+  static toJSON () {
+      return Object.fromEntries(Object.entries(this))
   }
 }

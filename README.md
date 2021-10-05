@@ -48,6 +48,10 @@ encoding.valueOf() // 42
 encoding.toString() // '42'
 encoding.toJSON() // 42
 
+const encoding = Encoding.create('test')
+encoding.key // 'test'
+encoding.value // 'TEXT'
+
 const encoding = Encoding.fromValue('TEXT')
 encoding.key // test
 encoding.value // TEXT

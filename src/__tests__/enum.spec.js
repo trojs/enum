@@ -196,7 +196,7 @@ describe('Test the encoding enum', () => {
         static 'test3' = 3
     }
 
-    const example = Example.fromKey('test2')
+    const example = Example.create('test2')
     expect(example.key).toEqual('test2')
     expect(example.value).toEqual(2)
     expect(example.values).toEqual([1, 2, 3])
@@ -205,6 +205,12 @@ describe('Test the encoding enum', () => {
       test2: 2,
       test3: 3
     })
+    expect(Example.toJSON()).toEqual({
+      test1: 1,
+      test2: 2,
+      test3: 3
+    })
+    expect(JSON.stringify(Example)).toEqual('{"test1":1,"test2":2,"test3":3}')
     expect(Example.test1).toEqual(1)
     expect(Example.test2).toEqual(2)
     expect(Example.test3).toEqual(3)
@@ -221,5 +227,6 @@ describe('Test the encoding enum', () => {
     expect(example.valueOf()).toEqual(2)
     expect(example.toString()).toEqual('2')
     expect(example.toJSON()).toEqual(2)
+    expect(JSON.stringify(example)).toEqual('2')
   })
 })
