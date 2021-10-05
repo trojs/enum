@@ -46,6 +46,7 @@ encoding.in([42]) // false
 
 encoding.valueOf() // 42
 encoding.toString() // '42'
+encoding.toJSON() // 42
 
 const encoding = Encoding.fromValue('TEXT')
 encoding.key // test

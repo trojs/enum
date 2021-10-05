@@ -104,4 +104,8 @@ export default class Enum {
   toString () {
     return this.value.toString()
   }
+
+  toJSON () {
+    return this.value
+  }
 }
