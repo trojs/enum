@@ -37,9 +37,10 @@ export default class Enum {
   }
 
   get invertedOptions () {
-    return Object
-      .entries(this.constructor)
-      .reduce((newObj, [key, value]) => ({ ...newObj, [value]: key }), {})
+    return Object.fromEntries(
+      Object.entries(this.constructor)
+        .map(([key, value]) => [value, key])
+    )
   }
 
   setKey (key) {
