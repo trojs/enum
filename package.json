@@ -1,7 +1,7 @@
 {
     "name": "@hckrnews/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "author": {
         "name": "Pieter Wigboldus",
         "url": "https://hckr.news/"
@@ -30,7 +30,7 @@
         "babel-jest": "^27.2.4",
         "codecov": "^3.8.1",
         "coveralls": "^3.1.0",
-        "eslint": "^7.18.0",
+        "eslint": "^8.0.0",
         "esm": "^3.2.25",
         "jest": "^27.2.4",
         "jscpd": "^3.3.26",
