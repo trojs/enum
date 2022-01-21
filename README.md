@@ -1,6 +1,6 @@
 # Create vanilla JavaScript enums
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]
+[![NPM version][npm-image]][npm-url] [![Bugs][bugs-image]][bugs-url] [![Code Smells][code-smells-image]][code-smells-url] [![Duplicated Lines (%)][duplicate-lines-image]][duplicate-lines-url] [![Maintainability Rating][maintainability-rate-image]][maintainability-rate-url] [![Reliability Rating][reliability-rate-image]][reliability-rate-url] [![Security Rating][security-rate-image]][security-rate-url] [![Technical Debt][technical-debt-image]][technical-debt-url] [![Vulnerabilities][vulnerabilitiest-image]][vulnerabilitiest-url] [![Quality Gate Status][quality-gate-image]][quality-gate-url] [![Coverage][coverage-image]][coverage-url]
 
 ## Installation
 
@@ -74,9 +74,34 @@ JSON.stringify(example) // '42'
 
 [npm-url]: https://www.npmjs.com/package/@hckrnews/enum
 [npm-image]: https://img.shields.io/npm/v/@hckrnews/enum.svg
-[travis-url]: https://app.travis-ci.com/hckrnews/enum
-[travis-image]: https://app.travis-ci.com/hckrnews/enum.svg?branch=main
-[coveralls-url]: https://coveralls.io/r/hckrnews/enum
-[coveralls-image]: https://img.shields.io/coveralls/hckrnews/enum/main.svg
-[scrutinizer-url]: https://scrutinizer-ci.com/g/hckrnews/enum/?branch=main
-[scrutinizer-image]: https://scrutinizer-ci.com/g/hckrnews/enum/badges/quality-score.png?b=main
+
+[bugs-url]: https://sonarcloud.io/project/issues?id=hckrnews_enum&resolved=false&types=BUG
+[bugs-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=bugs
+
+[code-smells-url]: https://sonarcloud.io/project/issues?id=hckrnews_enum&resolved=false&types=CODE_SMELL
+[code-smells-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=code_smells
+
+[duplicate-lines-url]: https://sonarcloud.io/component_measures?id=hckrnews_enum&metric=duplicated_lines_density&view=list
+[duplicate-lines-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=duplicated_lines_density
+
+[maintainability-rate-url]: https://sonarcloud.io/project/issues?id=hckrnews_enum&resolved=false&types=CODE_SMELL
+[maintainability-rate-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=sqale_rating
+
+[reliability-rate-url]: https://sonarcloud.io/component_measures?id=hckrnews_enum&metric=Reliability
+[reliability-rate-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=reliability_rating
+
+[security-rate-url]: https://sonarcloud.io/project/security_hotspots?id=hckrnews_enum
+[security-rate-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=security_rating
+
+[technical-debt-url]: https://sonarcloud.io/component_measures?id=hckrnews_enum
+[technical-debt-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=sqale_index
+
+[vulnerabilitiest-url]: https://sonarcloud.io/project/issues?id=hckrnews_enum&resolved=false&types=VULNERABILITY
+[vulnerabilitiest-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=vulnerabilities
+
+[quality-gate-url]: https://sonarcloud.io/summary/new_code?id=hckrnews_enum
+[quality-gate-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=alert_status
+
+[coverage-url]: https://sonarcloud.io/component_measures?id=hckrnews_enum&metric=coverage&view=list
+[coverage-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=coverage
+
