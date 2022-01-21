@@ -19,57 +19,57 @@ or
 ```javascript
 import Enum from '@hckrnews/enum'
 
-class Ecample extends Enum {
+class Example extends Enum {
   static test = 'TEXT'
   static another = 42
 }
 
-Encoding.test // 'TEXT'
-Encoding.options // { test: 'TEXT', another: 42 }
-Encoding.options.test // 'TEXT'
+Example.test // 'TEXT'
+Example.options // { test: 'TEXT', another: 42 }
+Example.options.test // 'TEXT'
 
-const encoding = Encoding.fromKey('test')
-encoding.key // 'test'
-encoding.value // 'TEXT'
-encoding.values // [ 'TEXT', 42 ]
-encoding.keys // [ 'test', 'another ]
-encoding.test // 'TEXT'
-encoding.another // 42
-encoding.length // 2
+const example = Example.fromKey('test')
+example.key // 'test'
+example.value // 'TEXT'
+example.values // [ 'TEXT', 42 ]
+example.keys // [ 'test', 'another ]
+example.test // 'TEXT'
+example.another // 42
+example.length // 2
 
-encoding.is(Encoding.test) // true
-encoding.is('TEXT') // true
-encoding.is(42) // false
-encoding.in([Encoding.test]) // true
-encoding.in(['TEXT']) // true
-encoding.in([42]) // false
+example.is(Example.test) // true
+example.is('TEXT') // true
+example.is(42) // false
+example.in([Example.test]) // true
+example.in(['TEXT']) // true
+example.in([42]) // false
 
-encoding.valueOf() // 42
-encoding.toString() // 'test'
-encoding.toJSON() // 'test'
-JSON.stringify(encoding) // '"test"'
+example.valueOf() // 42
+example.toString() // 'test'
+example.toJSON() // 'test'
+JSON.stringify(example) // '"test"'
 
-const encoding = Encoding.create('test')
-encoding.key // 'test'
-encoding.value // 'TEXT'
+const example = Example.create('test')
+example.key // 'test'
+example.value // 'TEXT'
 
-const encoding = Encoding.fromValue('TEXT')
-encoding.key // test
-encoding.value // TEXT
+const example = Example.fromValue('TEXT')
+example.key // test
+example.value // TEXT
 
-Encoding.hasKey('test') // teue
-Encoding.hasKey('TEXT') // false
-Encoding.hasValue('test') // teue
-Encoding.hasValue('TEXT') // false
+Example.hasKey('test') // teue
+Example.hasKey('TEXT') // false
+Example.hasValue('test') // teue
+Example.hasValue('TEXT') // false
 
-Encoding.toJSON() // { test: 'TEXT', another: 42 }
-JSON.stringify(Encoding) // '{"test":"TEXT","another":42}'
+Example.toJSON() // { test: 'TEXT', another: 42 }
+JSON.stringify(Example) // '{"test":"TEXT","another":42}'
 
-const encoding = Encoding.create('test', { output: 'value' })
-encoding.valueOf() // 42
-encoding.toString() // '42'
-encoding.toJSON() // 42
-JSON.stringify(encoding) // '42'
+const example = Example.create('test', { output: 'value' })
+example.valueOf() // 42
+example.toString() // '42'
+example.toJSON() // 42
+JSON.stringify(example) // '42'
 ```
 
 [npm-url]: https://www.npmjs.com/package/@hckrnews/enum
