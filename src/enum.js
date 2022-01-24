@@ -5,6 +5,10 @@ export default class Enum {
     this.output = 'key'
   }
 
+  get name () {
+    return this.constructor.name
+  }
+
   static get options () {
     return Object.fromEntries(Object.entries(this))
   }
@@ -16,7 +20,7 @@ export default class Enum {
   static fromKey (key, options = {}) {
     const newEnum = new this()
     if (!newEnum.isValidKey(key)) {
-      throw new Error(`Invalid enum key ${key}`)
+      throw new Error(`Invalid ${this.name} key ${key}`)
     }
     const value = newEnum.constructor[key]
     newEnum.setKeyValue({ key, value })
@@ -28,7 +32,7 @@ export default class Enum {
   static fromValue (value, options = {}) {
     const newEnum = new this()
     if (!newEnum.isValidValue(value)) {
-      throw new Error(`Invalid enum value ${value}`)
+      throw new Error(`Invalid ${this.name} value ${value}`)
     }
     const key = newEnum.invertedOptions[value]
     newEnum.setKeyValue({ key, value })

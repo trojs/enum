@@ -36,6 +36,7 @@ example.keys // [ 'test', 'another ]
 example.test // 'TEXT'
 example.another // 42
 example.length // 2
+example.name // 'Example'
 
 example.is(Example.test) // true
 example.is('TEXT') // true
