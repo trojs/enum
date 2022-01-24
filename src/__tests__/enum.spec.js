@@ -30,6 +30,7 @@ describe('Test the encoding enum', () => {
     expect(encoding.in([Encoding['utf-8']])).toEqual(true)
     expect(encoding.in(['UTF-8'])).toEqual(true)
     expect(encoding.in(['something'])).toEqual(false)
+    expect(encoding.name).toEqual('Encoding')
   })
 
   it('It should create from an value', () => {
@@ -55,13 +56,13 @@ describe('Test the encoding enum', () => {
   it('It should throw an exception for an unknown key', () => {
     expect(() => {
       Encoding.fromKey('UTF-8')
-    }).toThrowError('Invalid enum key UTF-8')
+    }).toThrowError('Invalid Encoding key UTF-8')
   })
 
   it('It should throw an exception for an unknown value', () => {
     expect(() => {
       Encoding.fromValue('utf-8')
-    }).toThrowError('Invalid enum value utf-8')
+    }).toThrowError('Invalid Encoding value utf-8')
   })
 
   it('It should handle reserved word key', () => {
@@ -79,6 +80,7 @@ describe('Test the encoding enum', () => {
     expect(example.keys).toEqual(['key'])
     expect(example.key).toEqual('key')
     expect(example.length).toEqual(1)
+    expect(example.name).toEqual('Example')
   })
 
   it('It should handle reserved word value', () => {
