@@ -1,4 +1,4 @@
-export default class Enum {
+class Enum {
   constructor () {
     this.key = null
     this.value = null
@@ -263,3 +263,5 @@ export default class Enum {
     return Object.fromEntries(Object.entries(this))
   }
 }
+
+export { Enum }

@@ -1,0 +1,42 @@
+{
+    "root": true,
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": false
+    },
+    "plugins": [
+        "import"
+    ],
+    "extends": [
+        "@hckrnews/eslint-config"
+    ],
+    "rules": {
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "always"
+            }
+        ]
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "settings": {
+        "jsdoc": {
+            "mode": "typescript"
+        }
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/__tests__/*.{j,t}s?(x)",
+                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ]
+}

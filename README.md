@@ -17,7 +17,7 @@ or
 ## Usage
 
 ```javascript
-import Enum from '@hckrnews/enum'
+import { Enum } from '@hckrnews/enum'
 
 class Example extends Enum {
   static test = 'TEXT'
