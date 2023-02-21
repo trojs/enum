@@ -7,7 +7,8 @@
     "ignore": [
         "**/__snapshots__/**",
         "**/__tests__/**",
-        "**/__fixtures__/**"
+        "**/__fixtures__/**",
+        "**/*.test.js"
     ],
     "absolute": true,
     "gitignore": true
