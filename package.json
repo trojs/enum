@@ -1,7 +1,7 @@
 {
     "name": "@hckrnews/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "author": {
         "name": "Pieter Wigboldus",
         "url": "https://hckr.news/"
