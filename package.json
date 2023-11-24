@@ -1,12 +1,12 @@
 {
     "name": "@hckrnews/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "author": {
         "name": "Pieter Wigboldus",
         "url": "https://hckr.news/"
     },
-    "license": "LGPL-3.0",
+    "license": "MIT",
     "scripts": {
         "lint": "standard src",
         "lint:fix": "standard src --fix",
