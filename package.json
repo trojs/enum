@@ -1,46 +1,27 @@
 {
     "name": "@hckrnews/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "2.0.7",
+    "version": "3.0.0",
     "author": {
         "name": "Pieter Wigboldus",
         "url": "https://hckr.news/"
     },
     "license": "MIT",
     "scripts": {
-        "lint": "standard src",
-        "lint:fix": "standard src --fix",
+        "lint": "eslint src/*.js --config .eslintrc",
+        "lint:report": "eslint src/*.js --config .eslintrc -f json -o report.json",
+        "lint:fix": "eslint src/*.js --config .eslintrc --fix",
         "test": "c8 node --test src/__tests__/*.js",
         "cpd": "node_modules/jscpd/bin/jscpd src",
-        "vulnerabilities": "npm audit --production",
-        "build": "microbundle --target node src/enum.js"
+        "vulnerabilities": "npm audit --production"
     },
     "type": "module",
     "files": [
-        "src/enum.js",
-        "dist/enum.cjs",
-        "dist/enum.cjs.map",
-        "dist/enum.js",
-        "dist/enum.js.map",
-        "dist/enum.module.mjs",
-        "dist/enum.module.mjs.map",
-        "dist/enum.umd.cjs",
-        "dist/enum.umd.cjs.map"
+        "src/enum.js"
     ],
-    "main": "dist/enum.umd.cjs",
+    "main": "src/enum.js",
     "source": "src/enum.js",
-    "module": "dist/enum.module.mjs",
-    "unpkg": "dist/enum.umd.cjs",
-    "umd:main": "dist/enum.umd.cjs",
-    "exports": {
-        "node": {
-            "default": "./dist/enum.umd.cjs",
-            "module": "./src/enum.js",
-            "require": "./dist/enum.umd.cjs"
-        },
-        "require": "./dist/enum.umd.cjs",
-        "default": "./dist/enum.umd.cjs"
-    },
+    "module": "src/enum.js",
     "devDependencies": {
         "@hckrnews/eslint-code-quality": "^0.1.5",
         "@hckrnews/eslint-config": "^3.0.0",
@@ -55,7 +36,6 @@
         "eslint-plugin-prettier": "^5.0.0",
         "esm": "^3.2.25",
         "jscpd": "^3.3.26",
-        "microbundle": "^0.15.1",
         "prettier": "^3.0.0",
         "standard": "^17.0.0"
     },
