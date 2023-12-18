@@ -1,3 +1,5 @@
+/* eslint-disable max-statements */
+/* eslint-disable max-classes-per-file */
 import test from 'node:test';
 import assert from 'node:assert';
 import { Enum } from '../enum.js';
