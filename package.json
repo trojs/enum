@@ -36,7 +36,7 @@
         "eslint-plugin-prettier": "^5.0.0",
         "esm": "^3.2.25",
         "jscpd": "^3.3.26",
-        "prettier": "^3.0.0",
+        "prettier": "^3.2.0",
         "standard": "^17.0.0"
     },
     "repository": {
