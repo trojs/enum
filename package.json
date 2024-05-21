@@ -1,10 +1,10 @@
 {
-    "name": "@hckrnews/enum",
+    "name": "@trojs/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "3.0.3",
+    "version": "3.1.0",
     "author": {
         "name": "Pieter Wigboldus",
-        "url": "https://hckr.news/"
+        "url": "https://trojs.org/"
     },
     "license": "MIT",
     "scripts": {
@@ -30,7 +30,7 @@
         "eslint": "^8.18.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-html": "^7.0.0",
+        "eslint-plugin-html": "^8.0.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-jsx-a11y": "^6.6.0",
         "eslint-plugin-prettier": "^5.0.0",

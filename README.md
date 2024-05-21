@@ -4,9 +4,9 @@
 
 ## Installation
 
-`npm install @hckrnews/enum`
+`npm install @trojs/enum`
 or
-`yarn add @hckrnews/enum`
+`yarn add @trojs/enum`
 
 ## Test the package
 
@@ -17,7 +17,7 @@ or
 ## Usage
 
 ```javascript
-import { Enum } from '@hckrnews/enum'
+import { Enum } from '@trojs/enum'
 
 class Example extends Enum {
   static test = 'TEXT'
@@ -73,8 +73,8 @@ example.toJSON() // 42
 JSON.stringify(example) // '42'
 ```
 
-[npm-url]: https://www.npmjs.com/package/@hckrnews/enum
-[npm-image]: https://img.shields.io/npm/v/@hckrnews/enum.svg
+[npm-url]: https://www.npmjs.com/package/@trojs/enum
+[npm-image]: https://img.shields.io/npm/v/@trojs/enum.svg
 
 [bugs-url]: https://sonarcloud.io/project/issues?id=hckrnews_enum&resolved=false&types=BUG
 [bugs-image]: https://sonarcloud.io/api/project_badges/measure?project=hckrnews_enum&metric=bugs
