@@ -35,13 +35,13 @@
         "eslint-plugin-jsx-a11y": "^6.6.0",
         "eslint-plugin-prettier": "^5.0.0",
         "esm": "^3.2.25",
-        "jscpd": "^3.3.26",
+        "jscpd": "^4.0.0",
         "prettier": "^3.0.0",
         "standard": "^17.0.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/hckrnews/enum"
+        "url": "https://github.com/trojs/enum"
     },
     "engines": {
         "node": ">= 18"
