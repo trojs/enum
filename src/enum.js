@@ -7,7 +7,7 @@ class Enum {
 
     /**
      * Get the enum name
-     * @return {string}
+     * @returns {string}
      */
     get name() {
         return this.constructor.name;
@@ -15,7 +15,7 @@ class Enum {
 
     /**
      * Get the enum options
-     * @return {any[]}
+     * @returns {any[]}
      */
     static get options() {
         return Object.fromEntries(Object.entries(this));
@@ -23,11 +23,9 @@ class Enum {
 
     /**
      * Create an enum result by key
-     *
      * @param {string} key
      * @param {object} options
-     *
-     * @return {Enum}
+     * @returns {Enum}
      */
     static create(key, options = {}) {
         return this.fromKey(key, options);
@@ -35,11 +33,9 @@ class Enum {
 
     /**
      * Get an enum result by key
-     *
      * @param {string} key
      * @param {object} options
-     *
-     * @return {Enum}
+     * @returns {Enum}
      */
     static fromKey(key, options = {}) {
         const newEnum = new this();
@@ -55,11 +51,9 @@ class Enum {
 
     /**
      * Get an enum result by value
-     *
      * @param {any} value
      * @param {object} options
-     *
-     * @return {Enum}
+     * @returns {Enum}
      */
     static fromValue(value, options = {}) {
         const newEnum = new this();
@@ -75,7 +69,6 @@ class Enum {
 
     /**
      * Set the key and value of the enum
-     *
      * @param {{ key: string, value: any }} keyValue
      */
     setKeyValue({ key, value }) {
@@ -86,7 +79,6 @@ class Enum {
 
     /**
      * Set the options of the enum
-     *
      * @param {object} options
      */
     setOptions(options) {
@@ -95,8 +87,7 @@ class Enum {
 
     /**
      * Get the options inverted
-     *
-     * @return {object}
+     * @returns {object}
      */
     get invertedOptions() {
         return Object.fromEntries(
@@ -106,7 +97,6 @@ class Enum {
 
     /**
      * Set the enum key
-     *
      * @param {string} key
      */
     setKey(key) {
@@ -115,7 +105,6 @@ class Enum {
 
     /**
      * Set the enum value
-     *
      * @param {any} value
      */
     setValue(value) {
@@ -133,10 +122,8 @@ class Enum {
 
     /**
      * Check if the key is known in the enum
-     *
      * @param {string} key
-     *
-     * @return {boolean}
+     * @returns {boolean}
      */
     isValidKey(key) {
         return (
@@ -147,10 +134,8 @@ class Enum {
 
     /**
      * Check if the value is known in the enum
-     *
      * @param {any} value
-     *
-     * @return {boolean}
+     * @returns {boolean}
      */
     isValidValue(value) {
         return this.values.includes(value);
@@ -158,10 +143,8 @@ class Enum {
 
     /**
      * Check if the value is the current enum value
-     *
      * @param {any} value
-     *
-     * @return {boolean}
+     * @returns {boolean}
      */
     is(value) {
         return this.value === value;
@@ -169,10 +152,8 @@ class Enum {
 
     /**
      * Check if the enum has these values
-     *
-     * @param {array} values
-     *
-     * @return {boolean}
+     * @param {Array} values
+     * @returns {boolean}
      */
     in(values) {
         return values.includes(this.value);
@@ -180,10 +161,8 @@ class Enum {
 
     /**
      * Check if the enum has this key
-     *
      * @param {string} key
-     *
-     * @return {boolean}
+     * @returns {boolean}
      */
     static hasKey(key) {
         const newEnum = new this();
@@ -193,10 +172,8 @@ class Enum {
 
     /**
      * Check if the enum has this value
-     *
      * @param {any} value
-     *
-     * @return {boolean}
+     * @returns {boolean}
      */
     static hasValue(value) {
         const newEnum = new this();
@@ -206,8 +183,7 @@ class Enum {
 
     /**
      * Get all the enum keys
-     *
-     * @return {array}
+     * @returns {Array}
      */
     get keys() {
         return Object.keys(this.constructor);
@@ -215,8 +191,7 @@ class Enum {
 
     /**
      * Get all the enum values
-     *
-     * @return {array}
+     * @returns {Array}
      */
     get values() {
         return Object.values(this.constructor);
@@ -224,8 +199,7 @@ class Enum {
 
     /**
      * Get the number of enum items
-     *
-     * @return {number}
+     * @returns {number}
      */
     get length() {
         return Object.keys(this.constructor).length;
@@ -233,8 +207,7 @@ class Enum {
 
     /**
      * Get the enum value
-     *
-     * @return {any}
+     * @returns {any}
      */
     valueOf() {
         return this.value;
@@ -242,8 +215,7 @@ class Enum {
 
     /**
      * Get the enum key (or value) as a string
-     *
-     * @return {string}
+     * @returns {string}
      */
     toString() {
         return this[this.output].toString();
@@ -251,8 +223,7 @@ class Enum {
 
     /**
      * Get the enum key (or value)
-     *
-     * @return {any}
+     * @returns {any}
      */
     toJSON() {
         return this[this.output];
@@ -260,8 +231,7 @@ class Enum {
 
     /**
      * Get the enum items as an object
-     *
-     * @return {object}
+     * @returns {object}
      */
     static toJSON() {
         return Object.fromEntries(Object.entries(this));
