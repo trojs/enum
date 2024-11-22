@@ -1,8 +1,8 @@
 class Enum {
     constructor() {
-        this.key = null;
-        this.value = null;
-        this.output = 'key';
+        this.key = null
+        this.value = null
+        this.output = 'key'
     }
 
     /**
@@ -10,7 +10,7 @@ class Enum {
      * @returns {string}
      */
     get name() {
-        return this.constructor.name;
+        return this.constructor.name
     }
 
     /**
@@ -18,7 +18,7 @@ class Enum {
      * @returns {any[]}
      */
     static get options() {
-        return Object.fromEntries(Object.entries(this));
+        return Object.fromEntries(Object.entries(this))
     }
 
     /**
@@ -28,7 +28,7 @@ class Enum {
      * @returns {Enum}
      */
     static create(key, options = {}) {
-        return this.fromKey(key, options);
+        return this.fromKey(key, options)
     }
 
     /**
@@ -38,15 +38,15 @@ class Enum {
      * @returns {Enum}
      */
     static fromKey(key, options = {}) {
-        const newEnum = new this();
+        const newEnum = new this()
         if (!newEnum.isValidKey(key)) {
-            throw new Error(`Invalid ${this.name} key ${key}`);
+            throw new Error(`Invalid ${this.name} key ${key}`)
         }
-        const value = newEnum.constructor[key];
-        newEnum.setKeyValue({ key, value });
-        newEnum.setOptions(options);
+        const value = newEnum.constructor[key]
+        newEnum.setKeyValue({ key, value })
+        newEnum.setOptions(options)
 
-        return newEnum;
+        return newEnum
     }
 
     /**
@@ -56,15 +56,15 @@ class Enum {
      * @returns {Enum}
      */
     static fromValue(value, options = {}) {
-        const newEnum = new this();
+        const newEnum = new this()
         if (!newEnum.isValidValue(value)) {
-            throw new Error(`Invalid ${this.name} value ${value}`);
+            throw new Error(`Invalid ${this.name} value ${value}`)
         }
-        const key = newEnum.invertedOptions[value];
-        newEnum.setKeyValue({ key, value });
-        newEnum.setOptions(options);
+        const key = newEnum.invertedOptions[value]
+        newEnum.setKeyValue({ key, value })
+        newEnum.setOptions(options)
 
-        return newEnum;
+        return newEnum
     }
 
     /**
@@ -72,9 +72,9 @@ class Enum {
      * @param {{ key: string, value: any }} keyValue
      */
     setKeyValue({ key, value }) {
-        this.setValues();
-        this.setKey(key);
-        this.setValue(value);
+        this.setValues()
+        this.setKey(key)
+        this.setValue(value)
     }
 
     /**
@@ -82,7 +82,7 @@ class Enum {
      * @param {object} options
      */
     setOptions(options) {
-        this.output = options?.output || this.output;
+        this.output = options?.output || this.output
     }
 
     /**
@@ -92,7 +92,7 @@ class Enum {
     get invertedOptions() {
         return Object.fromEntries(
             Object.entries(this.constructor).map(([key, value]) => [value, key])
-        );
+        )
     }
 
     /**
@@ -100,7 +100,7 @@ class Enum {
      * @param {string} key
      */
     setKey(key) {
-        this.key = key;
+        this.key = key
     }
 
     /**
@@ -108,7 +108,7 @@ class Enum {
      * @param {any} value
      */
     setValue(value) {
-        this.value = value;
+        this.value = value
     }
 
     /**
@@ -116,8 +116,8 @@ class Enum {
      */
     setValues() {
         Object.entries(this.constructor).forEach(([key, value]) => {
-            this[key] = value;
-        });
+            this[key] = value
+        })
     }
 
     /**
@@ -129,7 +129,7 @@ class Enum {
         return (
             Object.hasOwnProperty.call(this.constructor, key) &&
             Object.propertyIsEnumerable.call(this.constructor, key)
-        );
+        )
     }
 
     /**
@@ -138,7 +138,7 @@ class Enum {
      * @returns {boolean}
      */
     isValidValue(value) {
-        return this.values.includes(value);
+        return this.values.includes(value)
     }
 
     /**
@@ -147,7 +147,7 @@ class Enum {
      * @returns {boolean}
      */
     is(value) {
-        return this.value === value;
+        return this.value === value
     }
 
     /**
@@ -156,7 +156,7 @@ class Enum {
      * @returns {boolean}
      */
     in(values) {
-        return values.includes(this.value);
+        return values.includes(this.value)
     }
 
     /**
@@ -165,9 +165,9 @@ class Enum {
      * @returns {boolean}
      */
     static hasKey(key) {
-        const newEnum = new this();
+        const newEnum = new this()
 
-        return newEnum.isValidKey(key);
+        return newEnum.isValidKey(key)
     }
 
     /**
@@ -176,9 +176,9 @@ class Enum {
      * @returns {boolean}
      */
     static hasValue(value) {
-        const newEnum = new this();
+        const newEnum = new this()
 
-        return newEnum.isValidValue(value);
+        return newEnum.isValidValue(value)
     }
 
     /**
@@ -186,7 +186,7 @@ class Enum {
      * @returns {Array}
      */
     get keys() {
-        return Object.keys(this.constructor);
+        return Object.keys(this.constructor)
     }
 
     /**
@@ -194,7 +194,7 @@ class Enum {
      * @returns {Array}
      */
     get values() {
-        return Object.values(this.constructor);
+        return Object.values(this.constructor)
     }
 
     /**
@@ -202,7 +202,7 @@ class Enum {
      * @returns {number}
      */
     get length() {
-        return Object.keys(this.constructor).length;
+        return Object.keys(this.constructor).length
     }
 
     /**
@@ -210,7 +210,7 @@ class Enum {
      * @returns {any}
      */
     valueOf() {
-        return this.value;
+        return this.value
     }
 
     /**
@@ -218,7 +218,7 @@ class Enum {
      * @returns {string}
      */
     toString() {
-        return this[this.output].toString();
+        return this[this.output].toString()
     }
 
     /**
@@ -226,7 +226,7 @@ class Enum {
      * @returns {any}
      */
     toJSON() {
-        return this[this.output];
+        return this[this.output]
     }
 
     /**
@@ -234,8 +234,8 @@ class Enum {
      * @returns {object}
      */
     static toJSON() {
-        return Object.fromEntries(Object.entries(this));
+        return Object.fromEntries(Object.entries(this))
     }
 }
 
-export { Enum };
+export { Enum }
