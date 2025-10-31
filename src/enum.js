@@ -15,7 +15,7 @@ class Enum {
 
   /**
    * Get the enum options
-   * @returns {any[]}
+   * @returns {{ [k: string]: any; }}
    */
   static get options () {
     return Object.fromEntries(Object.entries(this))

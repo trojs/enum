@@ -1,0 +1,17 @@
+{
+  "name": "@trojs/enum",
+  "version": "4.0.6",
+  "license": "MIT",
+  "exports": "./src/enum.js",
+  "compilerOptions": {
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "deno.window"
+    ]
+  },
+  "tasks": {
+    "check": "deno check src/enum.js"
+  }
+}
