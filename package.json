@@ -1,7 +1,7 @@
 {
     "name": "@trojs/enum",
     "description": "Create vanilla JavaScript enums",
-    "version": "5.0.3",
+    "version": "5.0.4",
     "author": {
         "name": "Pieter Wigboldus",
         "url": "https://trojs.org/"
