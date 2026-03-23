@@ -33,7 +33,7 @@
         "eslint": "^9.21.0",
         "globals": "^17.0.0",
         "jscpd": "^4.0.5",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.0"
     },
     "repository": {
         "type": "git",
