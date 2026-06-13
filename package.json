@@ -32,7 +32,7 @@
         "deno": "^2.5.6",
         "eslint": "^9.21.0",
         "globals": "^17.0.0",
-        "jscpd": "^4.0.5",
+        "jscpd": "^5.0.0",
         "typescript": "^6.0.0"
     },
     "repository": {
